@@ -220,4 +220,17 @@
 		// Add dialogs module
 		$textarea.wikiEditor( 'addModule', dialogsConfig.getDefaultConfig() );
 	} );
+
+	mw.addWikiEditor = function ( $textarea ) {
+		$textarea.wikiEditor(
+			'addModule', require( './jquery.wikiEditor.toolbar.config.js' )
+		);
+
+		dialogsConfig = require( './jquery.wikiEditor.dialogs.config.js' );
+		// Replace icons
+		dialogsConfig.replaceIcons( $textarea );
+		// Add dialogs module
+		$textarea.wikiEditor( 'addModule', dialogsConfig.getDefaultConfig() );
+		
+ 	};
 }() );
